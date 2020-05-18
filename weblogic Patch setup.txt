@@ -1,0 +1,18 @@
+Due to critical maintenance activities, users may experience intermittent brief disconnects from Skype for Business between June 22 & 23. If you have meetings planned, visit https//go.accenture.com/SFBMaintenance for workaround options. 
+[?6/?21/?2019 12:31 PM]  Pm, Disilva:  
+Set path:
+export PATH=$PATH:/mnt/data/opt/wls1213/Opatch
+Set oracle path:
+export ORACLE_HOME=/mnt/data/opt/wls1213/
+export PATH=$PATH:/mnt/data/opt/wls1213/OPatch
+export PATH=$PATH:/data/opt/bea1213/OPatch
+export PATH=$PATH:/data/opt/wls1213/OPatch
+opatch lsinventory
+opatch apply
+opatch rollback -id 20543427
+chmod -r 700 /
+opatch apply -jdk=/path/java_homecd 
+/data/opt/jdk1.8.0_181
+opatch apply -jdk=/data/opt/jdk1.8.0_181/java_home
+export JAVA_HOME=/data/opt/jdk1.8.0_181 
+ 

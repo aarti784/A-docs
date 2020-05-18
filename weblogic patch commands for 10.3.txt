@@ -1,0 +1,35 @@
+Commands for applying patches
+
+./bsu.sh -install -patch_download_dir=/data/opt/bea1036/utils/bsu/cache_dir -patchlist=U5I2 -prod_dir=/data/opt/bea1036/wlserver_10.3
+
+Execute below commands for checking whether patches have been updated
+. /data/opt/bea1036/wlserver_10.3/server/bin/setWLSEnv.sh 
+java weblogic.version
+
+./bsu.sh -install -patch_download_dir=/data/opt/bea1036/utils/bsu/cache_dir -patchlist=IL49 -prod_dir=/data/opt/bea1036/wlserver_10.3
+
+Exceptions for patches
+
+[root@ip-172-31-5-168 bsu]# ./bsu.sh -install -patch_download_dir=/data/opt/bea1036/utils/bsu/cache_dir -patchlist=U5I2 -prod_dir=/data/opt/bea1036/wlserver_10.3
+Checking for conflicts.........
+No conflict(s) detected
+
+Installing Patch ID: U5I2..
+Result: Success
+
+
+Exception in thread "main" java.lang.OutOfMemoryError: GC overhead limit exceeded
+        at java.util.Arrays.copyOf(Arrays.java:2882)
+        at java.lang.AbstractStringBuilder.expandCapacity(AbstractStringBuilder.java:100)
+        at java.lang.AbstractStringBuilder.append(AbstractStringBuilder.java:390)
+        at java.lang.StringBuilder.append(StringBuilder.java:119)
+        at java.lang.Class.getMethod(Class.java:1645)
+        at com.bea.cie.common.dao.xbean.XBeanDataHandler.isValueSet(XBeanDataHandler.java:958)
+        at com.bea.cie.common.dao.xbean.XBeanDataHandler.getValueFromObject(XBeanDataHandler.java:589)
+        at com.bea.cie.common.dao.xbean.XBeanDataHandler.getSimpleValue(XBeanDataHandler.java:431)
+        at com.bea.plateng.patch.dao.cat.PatchDependency.getRule(PatchDependency.java:48)
+        at com.bea.plateng.patch.dao.cat.PatchCatalogHelper.getInvalidatedPatchMap(PatchCatalogHelper.java:1625)
+        at com.bea.plateng.patch.PatchSystem.updatePatchCatalog(PatchSystem.java:436)
+        at com.bea.plateng.patch.PatchSystem.refresh(PatchSystem.java:130)
+        at com.bea.plateng.patch.PatchSystem.setCacheDir(PatchSystem.java:201)
+        at com.bea.plateng.patch.Patch.main(Patch.java:306)
